@@ -1,7 +1,9 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Mic,
   Calendar,
@@ -15,31 +17,37 @@ import {
   Users,
   TrendingUp,
   MessageCircle,
-} from "lucide-react"
-import Link from "next/link"
+  ArrowUp,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       {/* Header */}
       <header className="px-4 lg:px-6 h-16 flex items-center border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-            <Mic className="w-4 h-4 text-white" />
+        <Link href="/">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+              <Mic className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Adulting Buddy
+            </span>
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Adulting Buddy
-          </span>
-        </div>
+        </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="#features" className="text-sm font-medium hover:text-purple-600 transition-colors">
+          <Link
+            href="#features"
+            className="text-sm font-medium hover:text-purple-600 transition-colors"
+          >
             Features
           </Link>
-          <Link href="#how-it-works" className="text-sm font-medium hover:text-purple-600 transition-colors">
+          <Link
+            href="#how-it-works"
+            className="text-sm font-medium hover:text-purple-600 transition-colors"
+          >
             How It Works
-          </Link>
-          <Link href="#download" className="text-sm font-medium hover:text-purple-600 transition-colors">
-            Download
           </Link>
         </nav>
       </header>
@@ -63,35 +71,31 @@ export default function LandingPage() {
                     Voice Agent
                   </h1>
                   <p className="max-w-[600px] text-gray-600 md:text-xl">
-                    Plan, track, and optimize your day with AI-powered voice assistance. Adulting Buddy helps you stay
-                    organized and productive, one conversation at a time.
+                    Plan, track, and optimize your day with AI-powered voice
+                    assistance. Adulting Buddy helps you stay organized and
+                    productive, one conversation at a time.
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download for iOS
-                  </Button>
-                  <Button variant="outline" size="lg">
-                    <Play className="w-4 h-4 mr-2" />
-                    Watch Demo
-                  </Button>
-                </div>
-                <div className="flex items-center space-x-4 text-sm text-gray-600">
-                  <div className="flex items-center space-x-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-medium">4.8/5</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Users className="w-4 h-4" />
-                    <span>10K+ users</span>
-                  </div>
+                <div className="w-full max-w-md space-y-2 py-4">
+                  <h1 className="text-xl">Sign up for alpha access</h1>
+                  <form className="flex gap-2">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="max-w-lg flex-1"
+                    />
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r from-purple-600 to-blue-600 px-8"
+                    >
+                      Submit
+                    </Button>
+                  </form>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
+
+              {/* Mobile screenshot */}
+              <div className="flex items-center justify-center flex-col">
                 <div className="relative">
                   <div className="w-64 h-[500px] bg-gradient-to-br from-purple-600 to-blue-600 rounded-[3rem] p-2 shadow-2xl">
                     <div className="w-full h-full bg-black rounded-[2.5rem] flex items-center justify-center">
@@ -111,21 +115,32 @@ export default function LandingPage() {
                     <Mic className="w-4 h-4 text-white" />
                   </div>
                 </div>
+                <div className="flex items-center justify-center mt-4 bg-white rounded-lg p-2">
+                  <Button variant="outline" className="bg-white" size="lg">
+                    <Play className="w-4 h-4 mr-2" />
+                    Watch Demo
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-white">
+        <section
+          id="features"
+          className="w-full py-12 md:py-24 lg:py-32 bg-white"
+        >
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <Badge className="bg-blue-100 text-blue-700">Features</Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Everything you need to adult better</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Everything you need to adult better
+                </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  From daily planning to habit tracking, Adulting Buddy uses AI to help you stay on top of your
-                  responsibilities.
+                  From daily planning to habit tracking, Adulting Buddy uses AI
+                  to help you stay on top of your responsibilities.
                 </p>
               </div>
             </div>
@@ -137,7 +152,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Smart Planning</h3>
                   <p className="text-gray-600">
-                    Tell your AI buddy what you need to do, and it'll help you create realistic, achievable daily plans.
+                    Tell your AI buddy what you need to do, and it'll help you
+                    create realistic, achievable daily plans.
                   </p>
                 </CardContent>
               </Card>
@@ -148,7 +164,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Progress Tracking</h3>
                   <p className="text-gray-600">
-                    Check in throughout the day with voice updates. Your buddy tracks your progress and celebrates wins.
+                    Check in throughout the day with voice updates. Your buddy
+                    tracks your progress and celebrates wins.
                   </p>
                 </CardContent>
               </Card>
@@ -159,7 +176,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Goal Setting</h3>
                   <p className="text-gray-600">
-                    Set meaningful goals and get personalized strategies to achieve them, one step at a time.
+                    Set meaningful goals and get personalized strategies to
+                    achieve them, one step at a time.
                   </p>
                 </CardContent>
               </Card>
@@ -170,7 +188,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Time Management</h3>
                   <p className="text-gray-600">
-                    Learn to estimate time better and build sustainable routines that actually stick.
+                    Learn to estimate time better and build sustainable routines
+                    that actually stick.
                   </p>
                 </CardContent>
               </Card>
@@ -181,7 +200,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Voice-First</h3>
                   <p className="text-gray-600">
-                    Natural conversations make planning feel effortless. No typing, just talking to your AI buddy.
+                    Natural conversations make planning feel effortless. No
+                    typing, just talking to your AI buddy.
                   </p>
                 </CardContent>
               </Card>
@@ -192,7 +212,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Insights & Analytics</h3>
                   <p className="text-gray-600">
-                    Understand your productivity patterns and get personalized recommendations for improvement.
+                    Understand your productivity patterns and get personalized
+                    recommendations for improvement.
                   </p>
                 </CardContent>
               </Card>
@@ -208,10 +229,15 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <Badge className="bg-purple-100 text-purple-700">How It Works</Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple. Natural. Effective.</h2>
+                <Badge className="bg-purple-100 text-purple-700">
+                  How It Works
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Simple. Natural. Effective.
+                </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Getting organized has never been this easy. Just talk to your AI buddy like you would a friend.
+                  Getting organized has never been this easy. Just talk to your
+                  AI buddy like you would a friend.
                 </p>
               </div>
             </div>
@@ -222,7 +248,9 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl font-bold">Tell Your Buddy</h3>
                 <p className="text-gray-600">
-                  {'"Hey buddy, I need to meal prep, do laundry, and finish that work presentation today."'}
+                  {
+                    '"Hey buddy, I need to meal prep, do laundry, and finish that work presentation today."'
+                  }
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
@@ -231,7 +259,8 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl font-bold">Get Your Plan</h3>
                 <p className="text-gray-600">
-                  Your AI buddy creates a realistic schedule, suggests time blocks, and helps prioritize tasks.
+                  Your AI buddy creates a realistic schedule, suggests time
+                  blocks, and helps prioritize tasks.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
@@ -240,128 +269,41 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl font-bold">Stay on Track</h3>
                 <p className="text-gray-600">
-                  Check in throughout the day, get gentle reminders, and celebrate your progress together.
+                  Check in throughout the day, get gentle reminders, and
+                  celebrate your progress together.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <Badge className="bg-green-100 text-green-700">Testimonials</Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Loved by busy adults everywhere</h2>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-              <Card className="border-0 shadow-lg">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600">
-                    {
-                      "\"Finally, a productivity app that doesn't feel like work. It's like having a supportive friend who actually helps me get things done.\""
-                    }
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-medium text-purple-600">S</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Sarah M.</p>
-                      <p className="text-sm text-gray-500">Marketing Manager</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-lg">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600">
-                    {
-                      '"The voice interface is a game-changer. I can plan my day while getting ready in the morning. So convenient!"'
-                    }
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-medium text-blue-600">M</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Mike R.</p>
-                      <p className="text-sm text-gray-500">Software Engineer</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="border-0 shadow-lg">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600">
-                    {
-                      '"I\'ve tried every productivity app out there. This is the first one that actually understands how my brain works."'
-                    }
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-medium text-green-600">A</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Alex T.</p>
-                      <p className="text-sm text-gray-500">Graduate Student</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section id="download" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-purple-600 to-blue-600">
+        <section
+          id="download"
+          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-purple-600 to-blue-600"
+        >
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center text-white">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Ready to adult like a pro?</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Ready to adult like a pro?
+                </h2>
                 <p className="max-w-[600px] text-purple-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of users who've transformed their daily productivity with their AI buddy.
+                  Join our alpha testing program and get early access to the
+                  app.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
-                  <Smartphone className="w-4 h-4 mr-2" />
-                  Download for iOS
-                </Button>
                 <Button
-                  variant="outline"
                   size="lg"
-                  className="border-white text-white hover:bg-white hover:text-purple-600"
+                  className="bg-white text-purple-600 hover:bg-gray-100"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                 >
-                  Join Waitlist
+                  <Smartphone className="w-4 h-4 mr-2" />
+                  Sign up for alpha access
                 </Button>
-              </div>
-              <div className="flex items-center space-x-6 text-sm text-purple-100">
-                <div className="flex items-center space-x-1">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>Free to download</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>No credit card required</span>
-                </div>
               </div>
             </div>
           </div>
@@ -372,19 +314,27 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Stay updated</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  Stay updated
+                </h2>
                 <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Get productivity tips, feature updates, and early access to new capabilities.
+                  Get updates and early access to new features.
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex gap-2">
-                  <Input type="email" placeholder="Enter your email" className="max-w-lg flex-1" />
-                  <Button type="submit" className="bg-gradient-to-r from-purple-600 to-blue-600">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="max-w-lg flex-1"
+                  />
+                  <Button
+                    type="submit"
+                    className="bg-gradient-to-r from-purple-600 to-blue-600"
+                  >
                     Subscribe
                   </Button>
                 </form>
-                <p className="text-xs text-gray-500">No spam, unsubscribe at any time.</p>
               </div>
             </div>
           </div>
@@ -399,19 +349,30 @@ export default function LandingPage() {
           </div>
           <span className="text-sm font-medium">Adulting Buddy</span>
         </div>
-        <p className="text-xs text-gray-500 sm:ml-auto">© 2024 Adulting Buddy. All rights reserved.</p>
+        <p className="text-xs text-gray-500 sm:ml-auto">
+          © 2024 Adulting Buddy. All rights reserved.
+        </p>
         <nav className="flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
+          <Link
+            href="#"
+            className="text-xs hover:underline underline-offset-4 text-gray-500"
+          >
             Privacy Policy
           </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
+          <Link
+            href="#"
+            className="text-xs hover:underline underline-offset-4 text-gray-500"
+          >
             Terms of Service
           </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4 text-gray-500">
+          <Link
+            href="#"
+            className="text-xs hover:underline underline-offset-4 text-gray-500"
+          >
             Support
           </Link>
         </nav>
       </footer>
     </div>
-  )
+  );
 }
