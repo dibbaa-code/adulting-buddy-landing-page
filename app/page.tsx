@@ -1,27 +1,61 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
-  Mic,
   Calendar,
   CheckCircle,
-  Smartphone,
   Clock,
-  Target,
-  Star,
-  Download,
-  Play,
-  Users,
-  TrendingUp,
   MessageCircle,
-  ArrowUp,
+  Mic,
+  Play,
+  Smartphone,
+  Target,
+  TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function LandingPage() {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setMessage(data.message);
+        setEmail("");
+      } else {
+        setIsSuccess(false);
+        setMessage(data.error);
+      }
+    } catch (error) {
+      setIsSuccess(false);
+      setMessage("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       {/* Header */}
@@ -78,19 +112,33 @@ export default function LandingPage() {
                 </div>
                 <div className="w-full max-w-md space-y-2 py-4">
                   <h1 className="text-xl">Sign up for alpha access</h1>
-                  <form className="flex gap-2">
+                  <form onSubmit={handleSubmit} className="flex gap-2">
                     <Input
                       type="email"
                       placeholder="Enter your email"
                       className="max-w-lg flex-1"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      disabled={isLoading}
                     />
                     <Button
                       type="submit"
                       className="bg-gradient-to-r from-purple-600 to-blue-600 px-8"
+                      disabled={isLoading}
                     >
-                      Submit
+                      {isLoading ? "..." : "Submit"}
                     </Button>
                   </form>
+                  {message && (
+                    <p
+                      className={`text-sm ${
+                        isSuccess ? "text-green-600" : "text-red-600"
+                      }`}
+                    >
+                      {message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -304,37 +352,6 @@ export default function LandingPage() {
                   <Smartphone className="w-4 h-4 mr-2" />
                   Sign up for alpha access
                 </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Newsletter */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                  Stay updated
-                </h2>
-                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Get updates and early access to new features.
-                </p>
-              </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex gap-2">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="max-w-lg flex-1"
-                  />
-                  <Button
-                    type="submit"
-                    className="bg-gradient-to-r from-purple-600 to-blue-600"
-                  >
-                    Subscribe
-                  </Button>
-                </form>
               </div>
             </div>
           </div>
