@@ -164,10 +164,12 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="flex items-center justify-center mt-4 bg-white rounded-lg p-2">
-                  <Button variant="outline" className="bg-white" size="lg">
-                    <Play className="w-4 h-4 mr-2" />
-                    Watch Demo
-                  </Button>
+                  <a href="https://x.com/dibbaa_code/status/1934046139332145604" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="bg-white" size="lg">
+                      <Play className="w-4 h-4 mr-2" />
+                      Watch Demo
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
