@@ -1,30 +1,5 @@
-# Adulting buddy landing page
+The landing page code for Adulting Buddy (adultingbuddy.com) is in this repository
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Tools for the assistant to take action inside the call are in this repository https://github.com/dibbaa-code/adulting-cloud-functions
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/dance-buddy-94ce2b66/v0-adulting-buddy-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/wpzujTwVBaV)
-
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/dance-buddy-94ce2b66/v0-adulting-buddy-landing-page](https://vercel.com/dance-buddy-94ce2b66/v0-adulting-buddy-landing-page)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/wpzujTwVBaV](https://v0.dev/chat/projects/wpzujTwVBaV)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+The repository for iOS app for user onboarding and intergations like calendar, email etc. is in this repository https://github.com/dibbaa-code/Adulting
